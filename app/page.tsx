@@ -1,6 +1,16 @@
 import Image from "next/image";
+import { ApiConfig } from '@iqss/dataverse-client-javascript/dist/core'
+import {DataverseApiAuthMechanism} from "@iqss/dataverse-client-javascript/dist/core/infra/repositories/ApiConfig";
+import {getDataset} from "@iqss/dataverse-client-javascript";
+ApiConfig.init('http://localhost:8000/api/v1', DataverseApiAuthMechanism.API_KEY, '086d4210-ccc7-4567-a736-a96010337cf0')
 
 export default function Home() {
+  const datasetId = 'doi:10.5072/FK2/WNGH3Y';
+  const datasetVersionId = '1.0';
+  getDataset.execute(datasetId, datasetVersionId).then((dataset) => {
+    console.log('Dataset:', JSON.stringify(dataset));
+  });
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
