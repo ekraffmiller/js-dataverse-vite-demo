@@ -1,5 +1,6 @@
 import  { useState } from 'react';
 import {DatasetPreview, getAllDatasetPreviews} from "@iqss/dataverse-client-javascript";
+import {Button} from "@iqss/dataverse-design-system";
 
 // Define the type for your object
 
@@ -17,7 +18,7 @@ export function DatasetTable()  {
 
     return (
         <div>
-            <button onClick={populateTable}>Populate Table</button>
+            <Button onClick={populateTable}>Populate Table</Button>
             <table>
                 <thead>
                 <tr>
